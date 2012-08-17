@@ -1,0 +1,94 @@
+<?php
+require_once('cls_mysql.php');
+
+class Outputer
+{
+	var $db;	
+	//construct function ,connecting to the database
+	function __construct()
+	{
+		$this-> db = new lc_mysql();
+		$this-> db -> connect();
+		$this-> db -> selectdb();
+	}
+	
+	function lc_header()
+	{
+		
+	}
+	
+	function lc_article_title($type)
+	{
+		$this-> db -> query("select article_id,article_title from article_info");
+		if($test=$this-> db -> affected_rows())
+		{
+			for($i=0;$i< $this->db->row_num();$i++)
+			{
+				//get a row data
+				$tempdata = $this-> db ->fetch_array();
+				//output the title
+				if($type == 'view')
+				{
+					echo '<p><a href="lc_templates/lc_article.php?id='.$tempdata['article_id'].'">'.$tempdata['article_title'].'</a></p>';
+				}
+				if($type == 'edit')
+				{
+					echo '<p><a href="../lc_templates/lc_edit_article.php?id='.$tempdata['article_id'].'">'.$tempdata['article_title'].'</a></p>';
+				}
+			}
+		}
+		else
+		{
+			echo 'is null';
+		}
+	}
+	
+	function lc_single_article_title($id)
+	{
+		$this -> db -> query("select article_title from article_info where article_id = $id");
+		if($this-> db -> affected_rows())
+		{
+			$tempdata = $this-> db ->fetch_array();
+			echo $tempdata['article_title'];
+		}
+		else
+		{
+			echo 'gain title false.';
+		}
+	}
+	
+	function lc_single_article_content($id)
+	{
+		$this -> db -> query("select article_content from article_info where article_id = $id");
+		if($this-> db -> affected_rows())
+		{
+			$tempdata = $this-> db ->fetch_array();
+			echo $tempdata['article_content'];
+		}
+		else
+		{
+			echo 'gain content false.';
+		}		
+	}
+	
+	function lc_single_article_addtime($id)
+	{
+		$this -> db -> query("select article_time from article_info where article_id = $id");
+		if($this-> db -> affected_rows())
+		{
+			$tempdata = $this-> db ->fetch_array();
+			echo $tempdata['article_time'];
+		}
+		else
+		{
+			echo 'gain time false.';
+		}			
+	}
+	
+	function lc_footer()
+	{
+	}
+}
+
+
+?>

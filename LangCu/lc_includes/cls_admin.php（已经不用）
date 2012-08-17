@@ -1,0 +1,109 @@
+<?php
+session_start();
+require_once('cls_mysql.php');
+
+class Admin
+{
+	var $db;
+	
+	//construct function ,connecting to the database
+	function __construct()
+	{
+		$this-> db = new lc_mysql();
+		$this-> db -> connect();
+		$this-> db -> selectdb();
+	}
+	
+	function add_user($username,$password)
+	{
+		//if the username is already existence,return -1
+		if($test = $this-> db -> query("select '$username' from admin_info where username = '$username'"))
+		{
+			return -1;
+		}
+		else
+		{
+			$this-> db -> query("INSERT INTO admin_info(username,password) VALUES ('$username','$password')");
+			$test=$this-> db -> affected_rows();
+			if($test == 1)
+			{
+				//insert sucess
+				return 1;
+			}
+			else
+			{
+				//insert false
+				return 0;
+			}
+		}
+	}
+	
+	function login($username,$password)
+	{				
+		$this-> db -> query("select '$username' from admin_info where username = '$username'");
+		//if the username is existent.
+		if($test=$this-> db -> affected_rows())
+		{
+			$this-> db -> query("select username,password from admin_info where username = '$username'");
+			$dbrow = $this-> db -> fetch_array();
+			if($dbrow['password'] == $password)
+			{
+				//password right , add to session
+				//no id in admin table ,this may caught an error in the future, xuzhiping bug
+				$_SESSION['admin_ID'] = '9999';
+				$_SESSION['usertype'] = 'admin';
+				$_SESSION['username'] = $dbrow['username'];
+				return 1;
+			}
+			else
+			{
+				//password wrong
+				return -1;
+			}
+		}
+		else
+		{
+			//the username is not existence return 0;
+			return 0;
+		}
+	}
+	
+	function logout()
+	{
+		$_SESSION['admin_ID']='';
+		return 1;
+	}
+	
+	function delive_article($title,$content)
+	{
+		$this-> db -> query("INSERT INTO article_info(article_title,article_content) VALUES ('$title','$content')");
+		$result = $this-> db -> affected_rows();
+		if($result == 1)
+		{
+			//insert sucess
+			return 1;
+		}
+		else
+		{
+			//insert false
+			return 0;
+		}
+	}
+	
+	function edit_article($title,$content,$id)
+	{		
+		$this-> db -> query("update article_info set article_title='$title',article_content='$content' where article_id='$id';");
+		$result = $this-> db -> affected_rows();
+		if($result == 1)
+		{
+			//insert sucess
+			return 1;
+		}
+		else
+		{
+			//insert false
+			return 0;
+		}	
+	}
+}
+?>

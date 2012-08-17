@@ -1,0 +1,53 @@
+/**
+ * LangCu CSS
+ * ============================================================================
+ * Initial the LangCu Program
+ * ============================================================================
+ * $Author : Zhiping Xu
+ * $Contact: http://weibo.com/spades7
+*/
+* {margin:0;}
+#page { width:985px; margin:0 auto; padding:0;background:#5FD9CD;}
+.logo{background:url(images/logo.jpg);width:985px;height:120px;}
+.footer{height:60px;}
+.footer_message{padding:20px;font-size:14px;color:#000;float:right;}
+
+.nav{height:60px;background:#ffb5a1;}
+.nav .item {width:100px;height:60px;float:left;font-size:25px;text-align:center;line-height:60px;}
+.nav a:visited{color:#000;text-decoration:none;}
+
+.langcu_gallery{margin:20px;}
+.langcu_gallery .title{font-size:16px;font-weight:600;}
+.langcu_gallery .description{margin:5px 0px 0px 0px;font-size:14px;text-indent: 2em;}
+.langcu_gallery .gallery{float:left;clear:both;width:943px;background:#b8f4ff;margin:10px 20px 10px 0px;font-size:20px;border-style: solid;border-width:thin;border-color:#98eaff;}
+.langcu_gallery .gallery .selector{width:65px;float:left;}
+.langcu_gallery .gallery .selector span{height:35px;line-height:35px;text-align:center; background:#5fd9cd;display:block;margin:10px 0px 10px 10px;}
+.langcu_gallery .gallery .picture img{margin:10px 0px 10px 20px;width:845px;float:left}
+
+
+.langcu_article_thumb{}
+.langcu_article_thumb .article{clear:both;background:#b8f4ff;margin:10px 20px 5px 20px;border-style: solid;border-width:thin;border-color:#98eaff;overflow:auto;}
+.langcu_article_thumb .title{font-size:16px;margin:10px;font-weight:600;}
+.langcu_article_thumb .content{text-indent: 2em;margin:10px;font-size:14px;}
+.langcu_article_thumb .add_time{margin:0px 10px 10px 10px;float:right;font-size:14px;}
+
+.langcu_schedule{margin:10px 0 10px 0;}
+
+.schedule_unfinish_block{width:310px;float:left; word-break:break-all;background:#AAE;margin:10px 10px 10px 0;}
+.schedule_unfinish_block .title{font-size:15px;padding:10px 10px 0px 10px;}
+.schedule_unfinish_block .content{margin:10px 0px 10px 0;font-size:18px;padding:0px 10px 0px 10px;font-size:14px}
+.schedule_unfinish_block .remark{display:inline;font-size:15px;padding:10px;}
+.schedule_unfinish_block .evaluation{padding:5px 15px 5px 15px;float:right;background:#000;font-size:20px;color:#FFF;}
+.schedule_unfinish_block span{float:right;background:#000;font-size:20px;color:#FFF;}
+
+.schedule_finish_block{width:280px;float:left; word-break:break-all;background:#EEA;margin:10px 10px 10px 0;padding:10px 10px 10px 10px;}
+.schedule_finish{clear:both;}
+.langcu_schedule_form{clear:both;}
+
+.langcu_note{clear:both;}
+.langcu_note_cat{margin:20px 0 20px 0;}
+.langcu_note_cat .langcu_note_cat_item {margin:5px;float:left;display:block;padding:10px 20px 10px 20px;background:#0D0;text-align:center}
+
+.langcu_note_item{width:280px;float:left; word-break:break-all;background:#AAE;margin:10px 20px 10px 0;padding:10px 10px 10px 10px;}
+.langcu_note_item p{margin:0;padding:0;color:#F00}
+.langcu_note_form{clear:both;}

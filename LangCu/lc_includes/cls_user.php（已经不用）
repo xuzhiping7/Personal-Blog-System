@@ -1,0 +1,76 @@
+<?php
+//此文档已经没有用了，被删掉，留着看以后是否会牵涉到，DEBUG
+//require_once('cls_mysql.php');
+//
+//class User
+//{
+//	var $db;
+//	
+//	//construct function ,connecting to the database
+//	function __construct()
+//	{
+//		$this-> db = new lc_mysql();
+//		$this-> db -> connect();
+//		$this-> db -> selectdb();
+//	}
+//	
+//	function add_user($u_email,$u_pw,$u_nickname)
+//	{
+//		//if the username is already existence,return -1
+//		if($test = $this-> db -> query("select '$u_email' from user where u_email = '$u_email'"))
+//		{
+//			return -1;
+//		}
+//		else
+//		{
+//			$this-> db -> query("INSERT INTO user(u_email,u_pw,u_nickname) VALUES ('$u_email','$u_pw','$u_nickname')");
+//			$test=$this-> db -> affected_rows();
+//			if($test == 1)
+//			{
+//				//insert sucess
+//				return 1;
+//			}
+//			else
+//			{
+//				//insert false
+//				return 0;
+//			}
+//		}
+//	}
+//	
+//	function login($username,$password)
+//	{				
+//		$this-> db -> query("select '$username' from user_info where uName = '$username'");
+//		//if the username is existent.
+//		if($test=$this-> db -> affected_rows())
+//		{
+//			$this-> db -> query("select uName,uPW,uID from user_info where uName = '$username'");
+//			$dbrow = $this-> db -> fetch_array();
+//			if($dbrow['uPW'] == $password)
+//			{
+//				//password right , add to session
+//				$_SESSION['user_ID'] = $dbrow['uID'];
+//				$_SESSION['username'] = $dbrow['uName'];
+//				return 1;
+//			}
+//			else
+//			{
+//				//password wrong
+//				return -1;
+//			}
+//		}
+//		else
+//		{
+//			//the username is not existence return 0;
+//			return 0;
+//		}
+//	}
+//	
+//	function logout()
+//	{
+//		$_SESSION['user_ID']='';
+//		return 1;
+//	}
+//}
+	
+?>
